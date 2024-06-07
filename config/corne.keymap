@@ -5,18 +5,16 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 
 #define DEFAULT_L 0
 #define SYMBOLS_L 1
 #define ARROWS_L  2
 #define NUMBERS_L 3
 
-
 / {
-
-	behaviors {
+    behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
@@ -27,47 +25,48 @@
             bindings = <&kp>, <&kp>;
         };
     };
-        keymap {
-                compatible = "zmk,keymap";
 
-                default_layer {
-			label = "DEF";
-                        bindings = <
-   &kp ESC   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp EQUAL    &kp BSPC
-   &kp SQT   &kp A &kp R &kp S &hm LCMD T &kp G   &kp M &hm LCMD N  &kp E     &kp I   &kp O       &kp RET
-   &kp TAB &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT   &kp SEMI   &kp FSLH 
-                  &kp LCMD &kp LSHFT &kp LCTRL   &to SYMBOLS_L &kp SPACE &to NUMBERS_L
-                        >;
-                };
+    keymap {
+        compatible = "zmk,keymap";
 
-                symbols_layer {
-			label = "SYMB";
-                        bindings = <
-   &kp ESC    &kp EXCL       &kp AT       &kp HASH       &kp DLLR       &kp PRCNT         &kp CARET   &kp AMPS   &kp STAR &kp MINUS  &none &kp BSPC
-   &kp GRAVE &none &none &none &none &kp PLUS        &kp HOME &kp LBRC &kp RBRC &kp END &kp BSLH &kp RET
-   &kp TAB   &none &none &none &none &kp MINUS        &kp LBKT   &kp LPAR   &kp RPAR &kp RBKT &none &to ARROWS_L
-                     &kp LCMD &kp LSHFT &to DEFAULT_L     &none &kp SPACE  &to NUMBERS_L
-                        >;
-                };
-
-                arrows_layer {
-			label = "NAV";
-                        bindings = <
-   &kp ESC  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR            &none &none &none &none &none &kp BSPC
-   &none &none   &kp C_PP &kp C_VOL_DN &kp C_VOL_UP &kp C_BRI_UP                     &kp LEFT &kp DOWN &kp UP  &kp RIGHT &none &kp RET
-   &kp TAB &none   &none   &kp C_PREV &kp C_NEXT &kp C_BRI_DN                         &none &none &none &none &none &none 
-                    	     &kp LCMD &kp LSHFT   &to DEFAULT_L                        &to SYMBOLS_L &kp SPACE    &to NUMBERS_L
-                        >;
-                };
-
-                numbers_layer {
-			label = "NUM";
-                        bindings = <
-   &kp ESC  &none &none &none &none &none                 &none &hm F7 N7      &hm F8 N8      &hm F9 N9 &none &hm DEL BSPC
-   &none   &none &none   &none   &kp STAR &kp PLUS           &kp EQUAL &hm F4 N4      &hm F5 N5      &hm F6 N6 &hm F12 DOT &kp RET
-   &kp TAB &none   &none   &none      &kp FSLH &kp MINUS       &hm F10 N0		&hm F1 N1      &hm F2 N2      &hm F3 N3 &kp COMMA &to ARROWS_L
-                    	     &kp LCMD &kp LSHFT   &to DEFAULT_L  &to SYMBOLS_L &kp SPACE    &none
-                        >;
-                };
+        default_layer {
+            label = "DEF";
+            bindings = <
+&kp ESC    &kp Q  &kp W  &kp E         &kp R       &kp T        &kp Y          &kp U       &kp I          &kp O    &kp P          &kp BSPC
+&kp TAB    &kp A  &kp S  &kp D         &hm LCMD F  &kp G        &kp H          &hm LCMD J  &kp K          &kp L    &kp SEMICOLON  &kp RET
+&kp LCTRL  &kp Z  &kp X  &kp C         &kp V       &kp B        &kp N          &kp M       &kp COMMA      &kp DOT  &kp SEMI       &kp FSLH
+                         &kp LEFT_ALT  &kp LSHFT   &kp SPACE    &to SYMBOLS_L  &kp SPACE   &to NUMBERS_L
+            >;
         };
+
+        symbols_layer {
+            label = "SYMB";
+            bindings = <
+&kp ESC    &kp EXCL  &kp AT  &kp HASH  &kp DLLR   &kp PRCNT        &kp CARET  &kp AMPS   &kp STAR       &kp MINUS  &none     &kp BSPC
+&kp GRAVE  &none     &none   &none     &none      &kp PLUS         &kp HOME   &kp LBRC   &kp RBRC       &kp END    &kp BSLH  &kp RET
+&kp TAB    &none     &none   &none     &none      &kp MINUS        &kp LBKT   &kp LPAR   &kp RPAR       &kp RBKT   &none     &to ARROWS_L
+                             &kp LCMD  &kp LSHFT  &to DEFAULT_L    &none      &kp SPACE  &to NUMBERS_L
+            >;
+        };
+
+        arrows_layer {
+            label = "NAV";
+            bindings = <
+&kp ESC  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR       &none          &none      &none          &none      &none  &kp BSPC
+&none    &none         &kp C_PP      &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_UP     &kp LEFT       &kp DOWN   &kp UP         &kp RIGHT  &none  &kp RET
+&kp TAB  &none         &none         &kp C_PREV    &kp C_NEXT    &kp C_BRI_DN     &none          &none      &none          &none      &none  &none
+                                     &kp LCMD      &kp LSHFT     &to DEFAULT_L    &to SYMBOLS_L  &kp SPACE  &to NUMBERS_L
+            >;
+        };
+
+        numbers_layer {
+            label = "NUM";
+            bindings = <
+&kp ESC  &none  &none  &none     &none      &none            &none          &hm F7 N7  &hm F8 N8  &hm F9 N9  &none        &hm DEL BSPC
+&none    &none  &none  &none     &kp STAR   &kp PLUS         &kp EQUAL      &hm F4 N4  &hm F5 N5  &hm F6 N6  &hm F12 DOT  &kp RET
+&kp TAB  &none  &none  &none     &kp FSLH   &kp MINUS        &hm F10 N0     &hm F1 N1  &hm F2 N2  &hm F3 N3  &kp COMMA    &to ARROWS_L
+                       &kp LCMD  &kp LSHFT  &to DEFAULT_L    &to SYMBOLS_L  &kp SPACE  &none
+            >;
+        };
+    };
 };
