@@ -42,9 +42,9 @@
         symbols_layer {
             label = "SYMB";
             bindings = <
-&kp ESC    &kp EXCL  &kp AT  &kp HASH      &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS  &kp STAR       &kp MINUS  &kp EQUAL  &kp BSPC
-&kp TAB    &none     &none   &none         &none      &kp PLUS     &kp HOME   &kp LBRC  &kp RBRC       &kp END    &kp BSLH   &kp RET
-&kp LCTRL  &none     &none   &none         &none      &kp MINUS    &kp LBKT   &kp LPAR  &kp RPAR       &kp RBKT   &none      &to ARROWS_L
+&kp ESC    &kp EXCL  &kp AT  &kp HASH      &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS  &kp STAR       &kp MINUS  &kp EQUAL   &kp BSPC
+&kp TAB    &none     &none   &none         &none      &kp PLUS     &kp HOME   &kp LBRC  &kp RBRC       &kp END    &kp BSLH    &kp RET
+&kp LCTRL  &none     &none   &none         &none      &kp MINUS    &kp LBKT   &kp LPAR  &kp RPAR       &kp RBKT   &kp DELETE  &none
                              &kp LEFT_ALT  &kp LSHFT  &kp SPACE    &to 0      &to 2     &to NUMBERS_L
             >;
         };
