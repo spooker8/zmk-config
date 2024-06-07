@@ -34,38 +34,38 @@
             bindings = <
 &kp ESC    &kp Q  &kp W  &kp E         &kp R       &kp T        &kp Y          &kp U       &kp I          &kp O    &kp P          &kp BSPC
 &kp TAB    &kp A  &kp S  &kp D         &hm LCMD F  &kp G        &kp H          &hm LCMD J  &kp K          &kp L    &kp SEMICOLON  &kp RET
-&kp LCTRL  &kp Z  &kp X  &kp C         &kp V       &kp B        &kp N          &kp M       &kp COMMA      &kp DOT  &kp SEMI       &kp FSLH
-                         &kp LEFT_ALT  &kp LSHFT   &kp SPACE    &to SYMBOLS_L  &kp SPACE   &to NUMBERS_L
+&kp LCTRL  &kp Z  &kp X  &kp C         &kp V       &kp B        &kp N          &kp M       &kp COMMA      &kp DOT  &kp SLASH      &kp SQT
+                         &kp LEFT_ALT  &kp LSHFT   &kp SPACE    &mo SYMBOLS_L  &mo 2       &mo NUMBERS_L
             >;
         };
 
         symbols_layer {
             label = "SYMB";
             bindings = <
-&kp ESC    &kp EXCL  &kp AT  &kp HASH  &kp DLLR   &kp PRCNT        &kp CARET  &kp AMPS   &kp STAR       &kp MINUS  &none     &kp BSPC
-&kp GRAVE  &none     &none   &none     &none      &kp PLUS         &kp HOME   &kp LBRC   &kp RBRC       &kp END    &kp BSLH  &kp RET
-&kp TAB    &none     &none   &none     &none      &kp MINUS        &kp LBKT   &kp LPAR   &kp RPAR       &kp RBKT   &none     &to ARROWS_L
-                             &kp LCMD  &kp LSHFT  &to DEFAULT_L    &none      &kp SPACE  &to NUMBERS_L
+&kp ESC    &kp EXCL  &kp AT  &kp HASH      &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS  &kp STAR       &kp MINUS  &kp EQUAL  &kp BSPC
+&kp TAB    &none     &none   &none         &none      &kp PLUS     &kp HOME   &kp LBRC  &kp RBRC       &kp END    &kp BSLH   &kp RET
+&kp LCTRL  &none     &none   &none         &none      &kp MINUS    &kp LBKT   &kp LPAR  &kp RPAR       &kp RBKT   &none      &to ARROWS_L
+                             &kp LEFT_ALT  &kp LSHFT  &kp SPACE    &to 0      &to 2     &to NUMBERS_L
             >;
         };
 
         arrows_layer {
             label = "NAV";
             bindings = <
-&kp ESC  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR       &none          &none      &none          &none      &none  &kp BSPC
-&none    &none         &kp C_PP      &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_UP     &kp LEFT       &kp DOWN   &kp UP         &kp RIGHT  &none  &kp RET
-&kp TAB  &none         &none         &kp C_PREV    &kp C_NEXT    &kp C_BRI_DN     &none          &none      &none          &none      &none  &none
-                                     &kp LCMD      &kp LSHFT     &to DEFAULT_L    &to SYMBOLS_L  &kp SPACE  &to NUMBERS_L
+&kp ESC    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR      &none           &none           &none          &none  &none  &kp BSPC
+&kp TAB    &none         &kp C_PP      &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_UP    &none           &kp UP_ARROW    &none          &none  &none  &kp RET
+&kp LCTRL  &none         &none         &kp C_PREV    &kp C_NEXT    &kp C_BRI_DN    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT      &none  &none  &none
+                                       &kp LEFT_ALT  &kp LSHFT     &kp SPACE       &to 0           &to 1           &to NUMBERS_L
             >;
         };
 
         numbers_layer {
             label = "NUM";
             bindings = <
-&kp ESC  &none  &none  &none     &none      &none            &none          &hm F7 N7  &hm F8 N8  &hm F9 N9  &none        &hm DEL BSPC
-&none    &none  &none  &none     &kp STAR   &kp PLUS         &kp EQUAL      &hm F4 N4  &hm F5 N5  &hm F6 N6  &hm F12 DOT  &kp RET
-&kp TAB  &none  &none  &none     &kp FSLH   &kp MINUS        &hm F10 N0     &hm F1 N1  &hm F2 N2  &hm F3 N3  &kp COMMA    &to ARROWS_L
-                       &kp LCMD  &kp LSHFT  &to DEFAULT_L    &to SYMBOLS_L  &kp SPACE  &none
+&kp ESC    &none  &none  &none         &none      &none        &none       &hm F7 N7  &hm F8 N8  &hm F9 N9  &none        &hm DEL BSPC
+&kp TAB    &none  &none  &none         &kp STAR   &kp PLUS     &kp EQUAL   &hm F4 N4  &hm F5 N5  &hm F6 N6  &hm F12 DOT  &kp RET
+&kp LCTRL  &none  &none  &none         &kp FSLH   &kp MINUS    &hm F10 N0  &hm F1 N1  &hm F2 N2  &hm F3 N3  &kp COMMA    &none
+                         &kp LEFT_ALT  &kp LSHFT  &kp SPACE    &to 0       &to 1      &to 2
             >;
         };
     };
