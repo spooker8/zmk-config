@@ -1,0 +1,80 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/mouse.h>
+
+#define BASE    0
+#define NAV     1
+#define MOUSE   2
+
+
+&lt {
+    quick_tap_ms = <250>;
+};
+
+&mt {
+    tapping-term-ms = <400>;
+};
+
+&mmv {
+    time-to-max-speed-ms = <50>;
+};
+
+&mwh {
+    acceleration-exponent=<1>;
+};
+
+/ {
+    behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
+            #binding-cells = <2>;
+            tapping_term_ms = <135>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+	keymap {
+		compatible = "zmk,keymap";
+
+		base {
+			bindings = <
+&kp Q          	&kp W          	&kp E         	&kp R       	&kp T                                  	&kp Y          	&kp U         	&kp I          	&kp O           &kp P          
+&kp A       	&kp S      	&kp D     	&kp F 	    	&kp G                                  	&kp H          	&kp J	    	&kp K     	&kp L      	&mt SEMI SQT  
+&kp Z           &kp X           &kp C           &kp V           &kp MINUS                        	&kp B           &kp N           &kp M           &kp COMMA       &mt FSLH DOT       
+                                &mt LGUI ESC    &mo NAV   	&mt LSHFT SPACE		                &lt MOUSE SPACE &mt LCTRL RET   &lt MOUSE BSPC   
+			>;
+		};
+
+		nav {
+			bindings = <
+&kp N1      	&kp N2       	&kp N3     	&kp N4     	&kp N5                           	&kp N6    	&kp N7     	&kp N8     	&kp N9     	&kp N0          
+&kp TAB       	&none        	&kp UP          &kp LBKT        &kp RBKT        	                &none           &none	        &kp UP          &kp LBKT       	&kp RBKT               
+&kp LSHFT       &kp LEFT       	&kp DOWN       	&kp RIGHT      	&kp CAPS                                &none           &kp LEFT        &kp DOWN        &kp RIGHT       &none   
+                                &trans          &trans          &trans                                  &trans          &trans          &trans          
+			>;
+		};
+
+		mouse {
+			bindings = <
+&mt ESC EXCL    &kp AT          &kp HASH        &kp DLLR           &kp PRCNT                               &kp CARET       &kp AMPS        &kp STAR        &kp LPAR        &kp RPAR          
+&kp LSHFT       &none           &bt BT_PRV      &bt BT_NXT         &bt BT_CLR                              &kp MINUS	&kp EQUAL       &kp LBKT        &kp RBKT        &kp BSLH               
+&kp LCTRL       &none           &none       	&ext_power EP_TOG  &ext_power EP_ON                        &none           &none           &none           &none           &kp GRAVE          
+                                &trans          &trans             &trans                                  &trans          &trans          &trans          
+			>;
+		};
+
+		
+	};
+};
