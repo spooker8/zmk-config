@@ -1,0 +1,92 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/mouse.h>
+
+#define BASE    0
+#define NAV     1
+#define MOUSE   2
+#define MEDIA   3
+#define NUM     4
+#define SYM     5
+#define FUN     6
+#define VANILLA 7
+#define ADJUST  8
+#define NAV_R   9
+
+&lt {
+    quick_tap_ms = <200>;
+};
+
+&mmv {
+    time-to-max-speed-ms = <50>;
+};
+
+&mwh {
+    acceleration-exponent=<1>;
+};
+
+#define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
+
+/ {
+    behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
+            #binding-cells = <2>;
+            tapping_term_ms = <135>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+	keymap {
+		compatible = "zmk,keymap";
+
+		base {
+			bindings = <
+AS(Q)           &kp W           &kp E           &kp R           &kp T                                   &kp Y           &kp U           &kp I           &kp O           &kp SQT          
+&kp LGUI        &hm LALT S      &kp D     	&km F 	    	&kp G                                   &kp H           &kp J	    	&kp K     	&kp L      	&kp P   
+&kp Z           &kp X           &kp C           &kp V           &kp B                                   &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH       
+                                &lt FUN ESC     &lt NUM SPACE   &lt SYM TAB                             &lt MOUSE RET   &lt NAV BSPC    &lt MEDIA DEL   
+			>;
+		};
+
+		nav {
+			bindings = <
+&kp PG_UP       &kp HOME        &kp UP          &kp END         &kp INS                                 &none           &none           &none           &none           &none          
+&kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp CAPS                                &none           &kp RSHFT       &kp LCTRL       &kp LALT        &kp LGUI       
+&kp LC(Z)       &kp LC(X)       &kp LC(C)       &kp LC(V)       &kp LC(Y)                               &none           &none           &none           &none           &none          
+                                &trans          &trans          &trans                                  &trans          &trans          &trans          
+			>;
+		};
+
+		mouse {
+			bindings = <
+&none           &none           &none           &none           &none                                   &none           &none           &none           &none           &none          
+&none           &none           &none           &none           &none                                   &none           &kp RSHFT       &kp LCTRL       &kp LALT        &kp LGUI       
+&kp LC(Z)       &kp LC(X)       &kp LC(C)       &kp LC(V)       &kp LC(Y)                               &none           &none           &none           &none           &none          
+                                &trans          &trans          &trans                                  &trans          &trans          &trans          
+			>;
+		};
+
+		media {
+			bindings = <
+&none           &none           &kp C_VOL_UP    &none           &none                                   &none           &none           &none           &none           &none          
+&none           &kp C_PREV      &kp C_VOL_DN    &kp C_NEXT      &none                                   &none           &kp RSHFT       &kp LCTRL       &kp LALT        &kp LGUI       
+&none           &none           &none           &none           &none                                   &none           &none           &none           &none           &none          
+                                &kp C_MUTE      &kp C_PP        &kp C_STOP                              &trans          &trans          &trans          
+			>;
+		};
+		
+	};
+};

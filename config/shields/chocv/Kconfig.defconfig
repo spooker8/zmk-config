@@ -1,0 +1,9 @@
+if SHIELD_CHOCV
+
+config ZMK_KEYBOARD_NAME
+    default "buddy's-board"
+
+config ZMK_MOUSE
+    default y
+
+endif
